@@ -1,8 +1,8 @@
-const ageSubmitButton = document.getElementById('submit_1_1');
+const ageSubmitButton = document.getElementById('submit-year');
 console.log(ageSubmitButton);
 
 function displayYear(){
-    const ageValue = document.getElementById('input_1_1').value;
+    const ageValue = document.getElementById('year').value;
     const paraText = document.getElementById('paragraph_1');
 
     const date = new Date().getFullYear();
@@ -15,12 +15,12 @@ ageSubmitButton.addEventListener('click', displayYear);
 
 
 // year calculation
-const yearSubmitButton = document.getElementById('submit_1_2');
+const yearSubmitButton = document.getElementById('new-submit');
 console.log(yearSubmitButton);
 
 function displayYearsBetweenDates(){
-    const dateValue_1 = document.getElementById('input_1_2').value + "";
-    const dateValue_2 = document.getElementById('input_1_3').value + "";
+    const dateValue_1 = document.getElementById('old-input').value + "";
+    const dateValue_2 = document.getElementById('new-input').value + "";
     console.log(dateValue_1); 
     console.log(dateValue_2); 
 
@@ -55,15 +55,13 @@ function displayYearsBetweenDates(){
     //calculate days difference by dividing total milliseconds in a day  
     var days_difference = time_difference / (1000 * 60 * 60 * 24);  
       
-    // document.write("Number of days between dates <br>" +   
-    //                 date1 + " and <br>" + date2 + " are: <br>"   
-    //                 + days_difference + " days");  
-
-    // const date = new Date().getFullYear();
-    // const userAge = date - ageValue;
-
-    paraText_1.innerHTML = `Number of years between the two dates is<br>   
-    ${Math.round(days_difference/365)} years`;
+    // checks if input is empty and also display message
+    if (dateValue_1.value === '' || dateValue_2 === '') {
+        paraText_1.innerHTML = `Fields must not be empty`;
+    } else {
+        paraText_1.innerHTML = `Difference between dates is<br>   
+        ${Math.round(days_difference/365)} years`;
+    }
 }
 
 yearSubmitButton.addEventListener('click', displayYearsBetweenDates);
